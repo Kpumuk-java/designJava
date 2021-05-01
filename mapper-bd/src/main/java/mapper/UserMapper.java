@@ -19,15 +19,24 @@ public class UserMapper {
         users = new ArrayList<>();
     }
 
-    public User findById (String uuid) throws SQLException {
-        PreparedStatement statement = this.connection.prepareStatement("SELECT uuid, name, age FROM users WHERE uuid = ?");
-        statement.setString(1, uuid);
+    public User findById (String id) throws SQLException {
+        if (!users.isEmpty()) {
+            for (User u : users) {
+                if (u.getId().equals(id)) {
+                    return u;
+                }
+            }
+        }
+
+        PreparedStatement statement = this.connection.prepareStatement("SELECT id, name, age FROM users WHERE id = ?");
+        statement.setString(1, id);
         try (ResultSet resultSet = statement.executeQuery()) {
             while(resultSet.next()) {
                 User user = new User(resultSet.getString(1), resultSet.getString(2), resultSet.getInt(3));
                 return user;
             }
         }
+
         throw new ResourceNotFoundException("User not found");
     }
 
@@ -36,11 +45,9 @@ public class UserMapper {
         try (ResultSet resultSet = statement.executeQuery()) {
             while(resultSet.next()) {
                 User user = new User(resultSet.getString(1), resultSet.getString(2), resultSet.getInt(3));
-                System.out.println(user.toString());
                 users.add(user);
             }
             return users;
         }
-        //throw new ResourceNotFoundException("User not found");
     }
 }

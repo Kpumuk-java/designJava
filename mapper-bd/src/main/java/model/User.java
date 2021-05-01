@@ -2,16 +2,16 @@ package model;
 
 
 public class User {
-    private String uuid;
+    private String id;
     private String name;
     private int age;
 
-    public String getUuid() {
-        return uuid;
+    public String getId() {
+        return id;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -30,8 +30,8 @@ public class User {
         this.age = age;
     }
 
-    public User(String uuid, String name, int age) {
-        this.uuid = uuid;
+    public User(String id, String name, int age) {
+        this.id = id;
         this.name = name;
         this.age = age;
     }
@@ -39,7 +39,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "uuid='" + uuid + '\'' +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 '}';

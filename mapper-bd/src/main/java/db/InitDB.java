@@ -6,7 +6,6 @@ import java.sql.SQLException;
 
 public class InitDB {
     private final String DB_URL = "jdbc:h2:mem:test;INIT=runscript from  + 'C:/Java/designJava/mapper-bd/src/main/resources/create.sql'";
-
     private final String DB_USER = "sa";
     private final String DB_PASSWORD = "";
 
