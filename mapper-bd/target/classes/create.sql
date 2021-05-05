@@ -1,6 +1,6 @@
 create table users (
     id                      bigserial primary key,
-    name                    varchar(30) not null unique,
+    name                    varchar(30) not null,
     age                     int
 );
 
